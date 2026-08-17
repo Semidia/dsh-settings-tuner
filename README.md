@@ -17,7 +17,7 @@ DeepSeek Harness 系统参数调整插件：在设置页提供超时、并行、
 
 ## 架构
 
-- **Host 半区**（`lib/index.js`）：提供 RPC `config/read` / `config/write`，编辑 profile 的 `cordis.patch.yml` 中未暴露到 settings 系统的参数。**行级精确匹配** YAML（只匹配缩进 0 的顶层条目，跳过注释/insert 块/嵌套），写入后自动运行 `dsh --profile web --dump-config` 验证，失败从备份回滚。
+- **Host 半区**（`lib/index.js`）：提供 RPC `config/read` / `config/write`，编辑 profile 的 `cordis.patch.yml` 中未暴露到 settings 系统的参数。**行级精确匹配** YAML（只匹配缩进 0 的顶层条目，跳过注释/insert 块/嵌套），写入后自动运行 `dsh --profile web --dump-config` 验证，失败从备份回滚。路径动态解析：`DSH_HOME` 环境变量定位 profile，`process.cwd()`（启动器以 harness 根为工作目录）定位部署根，可用 `DSH_HARNESS_ROOT` / `DSH_PROFILE_DIR` 覆盖。
 - **Client 半区**（`lib/client.js`）：设置页 UI。已暴露参数通过 `connection.api.settings` 直接读写（`installSettingsSection` 注册的命名空间改后即时生效）；未暴露参数通过 Host RPC 写入配置。
 
 ## 安装
