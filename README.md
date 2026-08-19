@@ -8,6 +8,7 @@ DeepSeek Harness 系统参数调整插件：在设置页提供超时、并行、
   - **代理循环**：maxParallelToolCalls（最大并行工具数）
   - **命令行**：timeoutMs / maxTimeoutMs / maxOutputBytes（命令超时与输出限制）
   - **DeepSeek 模型**：maxTokens / reasoningEffort / thinking / streamIdleTimeoutMs / retryPolicy（重试次数与退避）
+  - **第三方渠道重试（pi-ai）**：按渠道（yunzhou / jiyuanlvdong / dsfuli 等 llm-pi-ai providers）独立调整 retryPolicy —— 请求重试次数、重试初始延迟、重试最大延迟、重试抖动比率，**立即生效**（settings 热更新，无需重启）
   - **默认模型**：provider / model / reasoningEffort
   - **Web 搜索**：maxTokens / maxUses
   - **权限预设**：defaultPreset
